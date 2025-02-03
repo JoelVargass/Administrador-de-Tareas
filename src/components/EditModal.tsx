@@ -1,4 +1,4 @@
-import { useState} from "react";
+import { useState } from "react";
 import { Task } from "../interfaces/TaskInterface";
 
 interface EditModalProps {
@@ -11,8 +11,14 @@ const EditModal: React.FC<EditModalProps> = ({ task, onClose, onUpdate }) => {
   const [taskName, setTaskName] = useState(task.name);
   const [taskDescription, setTaskDescription] = useState(task.description);
   const [taskStatus, setTaskStatus] = useState(task.status);
+  const [error, setError] = useState<string | null>(null); // Estado para el mensaje de error
 
   const handleSave = () => {
+    if (!taskName || !taskDescription || !taskStatus) {
+      setError("Todos los campos deben ser completados.");
+      return; // Si algún campo está vacío, no guardamos los cambios
+    }
+
     const updatedTask: Task = {
       ...task,
       name: taskName,
@@ -32,6 +38,8 @@ const EditModal: React.FC<EditModalProps> = ({ task, onClose, onUpdate }) => {
           <button onClick={onClose} className="text-gray-500 hover:text-gray-700">X</button>
         </div>
         <div className="mt-4">
+          {error && <div className="text-red-500 mb-2">{error}</div>} {/* Mostrar el mensaje de error */}
+          
           <label className="block text-gray-700">Nombre de la Tarea</label>
           <input
             type="text"
@@ -54,12 +62,12 @@ const EditModal: React.FC<EditModalProps> = ({ task, onClose, onUpdate }) => {
             className="w-full border rounded px-2 py-1"
           >
             <option value="pending">Pendiente</option>
-            <option value="finished">Finalizada</option>
+            <option value="finished">Completada</option>
           </select>
 
           <button
             onClick={handleSave}
-            className="bg-violet-400 px-2 py-1 mt-3 w-full rounded text-white"
+            className="bg-violet-400 hover:bg-violet-500 px-2 py-1 mt-3 w-full rounded text-white"
           >
             Guardar Cambios
           </button>

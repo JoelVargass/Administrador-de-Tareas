@@ -19,21 +19,22 @@ function App() {
         <h1 className="text-center text-4xl font-bold">Administrador de Tareas</h1>
       </header>
 
-      <main className="max-w-3xl mx-auto shadow-lg rounded-lg mt-10 p-10">
+      <main className="max-w-3xl mx-auto rounded-lg mt-10 p-10">
         <div className="flex justify-between">
           <h2 className="text-2xl font-semibold">Lista de tareas</h2>
           <button
             onClick={() => setShowModal(true)}
-            className="bg-violet-400 text-white px-3 py-1 rounded-md"
+            className="bg-violet-400 text-white px-3 py-1 rounded-md hover:bg-violet-500"
           >
             Añadir Tarea
           </button>
         </div>
 
-        <TaskList key={reload} />
+        <TaskList key={reload} /> {/*no supe como hacer esto correctamente :p */}
 
         {showModal &&
-          createPortal(<AddModal onClose={handleCloseModal} />, document.body)}
+          createPortal(<AddModal onClose={handleCloseModal} />, 
+          document.body)}
       </main>
     </>
   );
