@@ -38,7 +38,7 @@ const TaskList = () => {
                 <select 
                     value={statusFilter} 
                     onChange={(e) => setStatusFilter(e.target.value as "all" | "pending" | "completed")}
-                    className="border border-1 rounded px-2 py-1 "
+                    className="border rounded px-2 py-1 "
                 >
                     <option value="all">Todas</option>
                     <option value="pending">Pendientes</option>
@@ -51,7 +51,7 @@ const TaskList = () => {
                     <div className="flex justify-between">
                         <h3 className="text-lg font-semibold">{task.name}</h3>
                         <span className={`text-sm ${task.status === "pending" ? "text-orange-600 bg-orange-200/50 rounded-full px-2 py-1" : "text-green-600 bg-green-200/50 rounded-full px-2 py-1"}`}>
-                            {task.status === "pending" ? "Pendiente" : "Finalizada"}
+                            {task.status === "pending" ? "Pendiente" : "Completada"}
                         </span>
                     </div>
                     <p>{task.description}</p>

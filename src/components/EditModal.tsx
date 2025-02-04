@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Task } from "../interfaces/TaskInterface";
+import { X } from "lucide-react";
 
 interface EditModalProps {
   task: Task;
@@ -35,10 +36,14 @@ const EditModal: React.FC<EditModalProps> = ({ task, onClose, onUpdate }) => {
       <section className="bg-white rounded shadow-lg p-4 w-full max-w-md">
         <div className="flex justify-between items-center">
           <h2 className="text-xl font-semibold">Editar Tarea</h2>
-          <button onClick={onClose} className="text-gray-500 hover:text-gray-700">X</button>
+          <button 
+            onClick={onClose} 
+            className="text-gray-500 hover:text-gray-700">
+              <X/>
+          </button>
         </div>
         <div className="mt-4">
-          {error && <div className="text-red-500 mb-2">{error}</div>} {/* Mostrar el mensaje de error */}
+          {error && <div className="text-red-500 mb-2">{error}</div>} 
           
           <label className="block text-gray-700">Nombre de la Tarea</label>
           <input

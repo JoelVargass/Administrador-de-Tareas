@@ -19,7 +19,7 @@ function App() {
         <h1 className="text-center text-4xl font-bold">Administrador de Tareas</h1>
       </header>
 
-      <main className="max-w-3xl mx-auto rounded-lg mt-10 p-10">
+      <main className="max-w-2xl mx-auto rounded-lg p-10">
         <div className="flex justify-between">
           <h2 className="text-2xl font-semibold">Lista de tareas</h2>
           <button
